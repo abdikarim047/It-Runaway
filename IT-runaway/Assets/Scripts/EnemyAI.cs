@@ -7,8 +7,13 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
 
     [Header("CHASE SETTINGS")]
-    public float chaseRange = 10f;
+    public float chaseRange = 10f;       // old distance trigger (kept for backup)
     public float stopChaseRange = 15f;
+
+    [Header("SIGHT SETTINGS")]
+    public float sightRange = 12f;       // how far the enemy can see
+    public float fieldOfView = 90f;      // view cone angle
+    public LayerMask obstructionMask;    // walls/obstacles
 
     [Header("ROAM SETTINGS")]
     public float roamRadius = 10f;
@@ -21,30 +26,32 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         roamTimer = roamInterval;
+
+        // auto-find player if not assigned
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        }
     }
 
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        // 🔥 Check of player op NavMesh staat
-        bool playerOnNavmesh = NavMesh.SamplePosition(player.position, out _, 1f, NavMesh.AllAreas);
+        bool canSeePlayer = CanSeePlayer();
 
         switch (currentState)
         {
             case State.Roaming:
                 RoamLogic();
 
-                // Begin pas met chasen ALS player op navmesh staat
-                if (distanceToPlayer <= chaseRange && playerOnNavmesh)
+                if (canSeePlayer || distanceToPlayer <= chaseRange)
                 {
                     currentState = State.Chasing;
                 }
                 break;
 
             case State.Chasing:
-                // Stop chasen als player te ver is OF niet op navmesh staat
-                if (distanceToPlayer >= stopChaseRange || !playerOnNavmesh)
+                if (!canSeePlayer && distanceToPlayer >= stopChaseRange)
                 {
                     currentState = State.Roaming;
                     break;
@@ -55,32 +62,61 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    bool CanSeePlayer()
+    {
+        // distance check
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance > sightRange) return false;
+
+        // direction to player
+        Vector3 dirToPlayer = (player.position - transform.position).normalized;
+
+        // angle check (view cone)
+        float angle = Vector3.Angle(transform.forward, dirToPlayer);
+        if (angle > fieldOfView / 2f) return false;
+
+        // raycast — check if there's a wall in the way
+        if (Physics.Raycast(transform.position + Vector3.up, dirToPlayer, out RaycastHit hit, sightRange))
+        {
+            if (hit.transform == player)
+            {
+                return true; // clear line of sight
+            }
+        }
+
+        return false;
+    }
+
     void RoamLogic()
     {
         roamTimer -= Time.deltaTime;
 
-        if (roamTimer <= 0f)
+        if (roamTimer <= 0f && agent.isOnNavMesh)
         {
             Vector3 newPos = RandomNavmeshLocation(roamRadius);
             agent.SetDestination(newPos);
-
             roamTimer = roamInterval;
         }
     }
 
     void ChaseLogic()
     {
-        agent.SetDestination(player.position);
+        if (agent.isOnNavMesh)
+        {
+            agent.SetDestination(player.position);
+        }
     }
 
     public Vector3 RandomNavmeshLocation(float radius)
     {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        randomDirection += transform.position;
-
-        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, radius, NavMesh.AllAreas))
+        for (int i = 0; i < 10; i++)
         {
-            return hit.position;
+            Vector3 randomDirection = Random.insideUnitSphere * radius + transform.position;
+
+            if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, radius, NavMesh.AllAreas))
+            {
+                return hit.position;
+            }
         }
 
         return transform.position;
