@@ -15,9 +15,6 @@ public class EnemyAI : MonoBehaviour
     public float fieldOfView = 90f;      // view cone angle
     public LayerMask obstructionMask;    // walls/obstacles
 
-    public float chaseRange = 10f;
-    public float stopChaseRange = 15f;
-
     [Header("ROAM SETTINGS")]
     public float roamRadius = 10f;
     public float roamInterval = 3f;
@@ -42,17 +39,12 @@ public class EnemyAI : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         bool canSeePlayer = CanSeePlayer();
 
-        // 🔥 Check of player op NavMesh staat
-        bool playerOnNavmesh = NavMesh.SamplePosition(player.position, out _, 1f, NavMesh.AllAreas);
-
         switch (currentState)
         {
             case State.Roaming:
                 RoamLogic();
 
                 if (canSeePlayer || distanceToPlayer <= chaseRange)
-                // Begin pas met chasen ALS player op navmesh staat
-                if (distanceToPlayer <= chaseRange && playerOnNavmesh)
                 {
                     currentState = State.Chasing;
                 }
@@ -60,8 +52,6 @@ public class EnemyAI : MonoBehaviour
 
             case State.Chasing:
                 if (!canSeePlayer && distanceToPlayer >= stopChaseRange)
-                // Stop chasen als player te ver is OF niet op navmesh staat
-                if (distanceToPlayer >= stopChaseRange || !playerOnNavmesh)
                 {
                     currentState = State.Roaming;
                     break;
@@ -105,11 +95,6 @@ public class EnemyAI : MonoBehaviour
         {
             Vector3 newPos = RandomNavmeshLocation(roamRadius);
             agent.SetDestination(newPos);
-        if (roamTimer <= 0f)
-        {
-            Vector3 newPos = RandomNavmeshLocation(roamRadius);
-            agent.SetDestination(newPos);
-
             roamTimer = roamInterval;
         }
     }
@@ -120,7 +105,6 @@ public class EnemyAI : MonoBehaviour
         {
             agent.SetDestination(player.position);
         }
-        agent.SetDestination(player.position);
     }
 
     public Vector3 RandomNavmeshLocation(float radius)
@@ -133,12 +117,6 @@ public class EnemyAI : MonoBehaviour
             {
                 return hit.position;
             }
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        randomDirection += transform.position;
-
-        if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, radius, NavMesh.AllAreas))
-        {
-            return hit.position;
         }
 
         return transform.position;

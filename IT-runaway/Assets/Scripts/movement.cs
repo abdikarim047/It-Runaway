@@ -5,8 +5,8 @@ public class SimpleFPSController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
-    public float sprintSpeed = 10f; 
-    public float gravity = -9.81f; // simpele zwaartekracht
+    public float sprintSpeed = 10f;   // new speed boost
+    public float gravity = -9.81f;
 
     [Header("Mouse Settings")]
     public float mouseSensitivity = 200f;
@@ -21,7 +21,6 @@ public class SimpleFPSController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         cameraTransform = Camera.main.transform;
 
-        // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -50,10 +49,6 @@ public class SimpleFPSController : MonoBehaviour
         if (controller.isGrounded)
         {
             verticalVelocity = -0.5f;
-        // --- Gravity ---
-        if (controller.isGrounded)
-        {
-            verticalVelocity = -0.5f; // kleine negatieve waarde om grounded te blijven
         }
         else
         {
@@ -63,6 +58,5 @@ public class SimpleFPSController : MonoBehaviour
         move.y = verticalVelocity;
 
         controller.Move(move * currentSpeed * Time.deltaTime);
-        controller.Move(move * moveSpeed * Time.deltaTime);
     }
 }
