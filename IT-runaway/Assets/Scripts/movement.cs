@@ -5,6 +5,7 @@ public class SimpleFPSController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
+    public float sprintSpeed = 10f; 
     public float gravity = -9.81f; // simpele zwaartekracht
 
     [Header("Mouse Settings")]
@@ -42,6 +43,13 @@ public class SimpleFPSController : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
+        // --- Sprinting ---
+        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+
+        // --- Gravity ---
+        if (controller.isGrounded)
+        {
+            verticalVelocity = -0.5f;
         // --- Gravity ---
         if (controller.isGrounded)
         {
@@ -54,6 +62,7 @@ public class SimpleFPSController : MonoBehaviour
 
         move.y = verticalVelocity;
 
+        controller.Move(move * currentSpeed * Time.deltaTime);
         controller.Move(move * moveSpeed * Time.deltaTime);
     }
 }
