@@ -21,6 +21,7 @@ public class SimpleFPSController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         cameraTransform = Camera.main.transform;
 
+        // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -49,6 +50,10 @@ public class SimpleFPSController : MonoBehaviour
         if (controller.isGrounded)
         {
             verticalVelocity = -0.5f;
+        // --- Gravity ---
+        if (controller.isGrounded)
+        {
+            verticalVelocity = -0.5f; // kleine negatieve waarde om grounded te blijven
         }
         else
         {
@@ -58,5 +63,6 @@ public class SimpleFPSController : MonoBehaviour
         move.y = verticalVelocity;
 
         controller.Move(move * currentSpeed * Time.deltaTime);
+        controller.Move(move * moveSpeed * Time.deltaTime);
     }
 }
