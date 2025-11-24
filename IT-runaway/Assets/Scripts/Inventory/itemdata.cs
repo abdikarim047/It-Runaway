@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewItem", menuName = "Invantory/Item")]
+[CreateAssetMenu(fileName = "NewItem", menuName = "Scriptable Objects/ItemData")]
 
 public class ItemData : ScriptableObject
 {
-    public string id;
+    public int id;
     public string itemname;
 
     public Sprite icon;
@@ -14,4 +14,5 @@ public class ItemData : ScriptableObject
     public bool stackebla = true;
 
     public int maxstack = 2;
+
 }
