@@ -10,8 +10,9 @@ public class PlayerPickup : MonoBehaviour
 
     private void Start()
     {
-        // Zorg dat de finish tekst onzichtbaar is
-        finishText.gameObject.SetActive(false);
+        // Zorg dat finish tekst standaard uit staat
+        if (finishText != null)
+            finishText.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,27 +23,34 @@ public class PlayerPickup : MonoBehaviour
             hasCube = true;
             Destroy(other.gameObject);
 
-            // Stop pickup timer en start de totale timer
+            // Stop pickup timer en start totale timer
             StopwatchTimerWithPickupAdjusted stopwatch = FindObjectOfType<StopwatchTimerWithPickupAdjusted>();
             if (stopwatch != null)
-            {
                 stopwatch.OnCubePickedUp();
-            }
         }
 
-        // Terug naar plane (finish)
+        // Finish bereiken
         if (other.CompareTag("Finish") && hasCube)
         {
-            // Toon finish UI tekst
-            finishText.gameObject.SetActive(true);
-            finishText.text = "Laptop succesfully retrieved!";
+            if (finishText != null)
+            {
+                finishText.gameObject.SetActive(true);
+                finishText.text = "Laptop succesfully retrieved!";
+            }
 
             // Stop de totale timer
             StopwatchTimerWithPickupAdjusted stopwatch = FindObjectOfType<StopwatchTimerWithPickupAdjusted>();
             if (stopwatch != null)
-            {
                 stopwatch.OnFinishReached();
-            }
         }
+    }
+
+    // Methode voor PlayerDamage om de pickup status te resetten bij respawn
+    public void ResetPickup()
+    {
+        hasCube = false;
+
+        if (finishText != null)
+            finishText.gameObject.SetActive(false);
     }
 }

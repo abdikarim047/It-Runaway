@@ -41,7 +41,7 @@ public class StopwatchTimerWithPickupAdjusted : MonoBehaviour
         textUI.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    // Wordt aangeroepen als de speler het blokje oppakt
+    // Cube opgepakt → pickup timer stopt, totale timer start
     public void OnCubePickedUp()
     {
         cubePickedUp = true;
@@ -49,16 +49,38 @@ public class StopwatchTimerWithPickupAdjusted : MonoBehaviour
 
         Debug.Log("Speler heeft het blokje gevonden in: " + FormatTime(pickupElapsedTime));
 
-        // Start de totale timer nu en laat hem zien
-        totalTimerText.text = "00:00"; 
+        totalTimerText.text = "00:00";
         totalTimerRunning = true;
     }
 
-    // Wordt aangeroepen als de speler bij finish is
+    // Finish bereikt → stop totale timer
     public void OnFinishReached()
     {
         totalTimerRunning = false;
         Debug.Log("Totale speeltijd vanaf oppakken: " + FormatTime(totalElapsedTime));
+    }
+
+    // **Stop alle timers** (bijvoorbeeld bij enemy aanraking)
+    public void StopAllTimers()
+    {
+        pickupTimerRunning = false;
+        totalTimerRunning = false;
+    }
+
+    // **Reset alle timers** (bijvoorbeeld bij respawn)
+    public void ResetTimers()
+    {
+        pickupElapsedTime = 0f;
+        totalElapsedTime = 0f;
+        pickupTimerRunning = true;
+        totalTimerRunning = false;
+        cubePickedUp = false;
+
+        if (pickupTimerText != null)
+            pickupTimerText.text = "00:00";
+
+        if (totalTimerText != null)
+            totalTimerText.text = "";
     }
 
     string FormatTime(float time)
