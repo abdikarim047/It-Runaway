@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c9a29e0eca30d24d918a8a783beb1b1, type: 3}
-  m_Name: NewItem
+  m_Name: zwaard
   m_EditorClassIdentifier: 
   id: 2
-  itemname: 
+  itemname: zwaard
   icon: {fileID: 0}
   itemprefab: {fileID: 0}
   stackebla: 1

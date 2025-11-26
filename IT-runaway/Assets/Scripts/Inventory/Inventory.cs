@@ -21,6 +21,18 @@ public class Inventory : MonoBehaviour
             Debug.Log("remove" + item.itemname);
         }
     }
+
+    public void PrintInventory()
+    {
+        Debug.Log("Inventory:");
+
+        foreach ( ItemData item in items)
+        {
+            Debug.Log(item.itemname);
+        }
+
+    }
+
     void Start()
     {
         
