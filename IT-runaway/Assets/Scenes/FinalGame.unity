@@ -45246,7 +45246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalFOV: 70
-  sprintFOV: 90
+  sprintFOV: 85
   fovChangeSpeed: 8
   controller: {fileID: 2046451215}
 --- !u!1 &928097937
