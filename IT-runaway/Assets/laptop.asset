@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   itemname: laptop
-  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  icon: {fileID: 21300000, guid: 49fa212229ac35e40b52943823d04e2a, type: 3}
   itemprefab: {fileID: 1716111664439686, guid: d95dfe9eeea7731489064565a2d8b306, type: 3}
   stackebla: 1
-  maxstack: 2
+  maxstack: 1

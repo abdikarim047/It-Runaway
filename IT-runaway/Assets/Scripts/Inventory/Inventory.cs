@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] 
-    private List<ItemData> items = new List<ItemData>();
-    
+    [SerializeField]
+    public List<ItemData> items = new List<ItemData>();
+
     public void additem(ItemData item)
     {
         items.Add(item);
         Debug.Log("added:" + item.itemname);
     }
 
-    public void removeItem(ItemData item)
-    {
-        if (items.Contains(item))
-        {
-            items.Remove(item);
-            Debug.Log("remove" + item.itemname);
-        }
-    }
+    // public void removeItem(ItemData item)
+    // {
+    //     if (items.Contains(item))
+    //     {
+    //         items.Remove(item);
+    //         Debug.Log("remove" + item.itemname);
+    //     }
+    // }
 
     public void PrintInventory()
     {
         Debug.Log("Inventory:");
 
-        foreach ( ItemData item in items)
+        foreach (ItemData item in items)
         {
             Debug.Log(item.itemname);
         }
@@ -35,12 +35,12 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
