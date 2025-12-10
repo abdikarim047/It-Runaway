@@ -4,7 +4,7 @@ public class FOVSprint : MonoBehaviour
 {
     [Header("FOV Settings")]
     public float normalFOV = 70f;
-    public float sprintFOV = 90f;
+    public float sprintFOV = 80f;
     public float fovChangeSpeed = 8f;
 
     [Header("References")]
