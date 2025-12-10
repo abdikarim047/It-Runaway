@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 03af608b29280ab45ba0b8646a2b9f5b
+  - enabled: 0
+    path: Assets/Scenes/Maze.unity
+    guid: 680a352ee073cfa4f8f814bdedf01283
+  - enabled: 1
+    path: Assets/Scenes/FinalGame.unity
+    guid: c3fd3c25bcde86f489f6c36f26315af9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

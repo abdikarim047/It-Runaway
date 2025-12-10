@@ -171,6 +171,11 @@ MonoBehaviour:
   player: {fileID: 1161473411}
   chaseRange: 40
   stopChaseRange: 40
+  sightRange: 12
+  fieldOfView: 90
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
   roamRadius: 1000
   roamInterval: 5
 --- !u!195 &444252
@@ -823,6 +828,11 @@ MonoBehaviour:
   player: {fileID: 1161473411}
   chaseRange: 40
   stopChaseRange: 40
+  sightRange: 12
+  fieldOfView: 90
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
   roamRadius: 1000
   roamInterval: 5
 --- !u!1 &370900781
@@ -1202,6 +1212,11 @@ MonoBehaviour:
   player: {fileID: 1161473411}
   chaseRange: 40
   stopChaseRange: 40
+  sightRange: 12
+  fieldOfView: 90
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
   roamRadius: 1000
   roamInterval: 5
 --- !u!195 &432687546
@@ -3504,6 +3519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  sprintSpeed: 10
   gravity: -9.81
   mouseSensitivity: 200
 --- !u!143 &1161473413
@@ -5553,6 +5569,11 @@ MonoBehaviour:
   player: {fileID: 1161473411}
   chaseRange: 40
   stopChaseRange: 40
+  sightRange: 12
+  fieldOfView: 90
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
   roamRadius: 1000
   roamInterval: 5
 --- !u!195 &1852636581
@@ -5953,6 +5974,11 @@ MonoBehaviour:
   player: {fileID: 1161473411}
   chaseRange: 40
   stopChaseRange: 40
+  sightRange: 12
+  fieldOfView: 90
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
   roamRadius: 1000
   roamInterval: 5
 --- !u!195 &2008144921
