@@ -1,8 +1,10 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerPickup : MonoBehaviour
 {
+    private Inventory inventory;
     private bool hasCube = false;
 
     [Header("UI")]
@@ -10,24 +12,20 @@ public class PlayerPickup : MonoBehaviour
 
     private void Start()
     {
-        // Zorg dat finish tekst standaard uit staat
+        inventory = FindAnyObjectByType<Inventory>();
+
         if (finishText != null)
+        {
             finishText.gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Cube oppakken
-        if (other.CompareTag("Pickup") && !hasCube)
-        {
-            hasCube = true;
-            Destroy(other.gameObject);
+        
+        Worlditem worlditem ;
 
-            // Stop pickup timer en start totale timer
-            StopwatchTimerWithPickupAdjusted stopwatch = FindObjectOfType<StopwatchTimerWithPickupAdjusted>();
-            if (stopwatch != null)
-                stopwatch.OnCubePickedUp();
-        }
+    
 
         // Finish bereiken
         if (other.CompareTag("Finish") && hasCube)

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField]
+
+
     public List<ItemData> items = new List<ItemData>();
 
     public void additem(ItemData item)
