@@ -4,12 +4,15 @@ using TMPro;
 public class PlayerPickup : MonoBehaviour
 {
     private bool hasCube = false;
+    public GameObject inventory;
+    private Inventory inventoryScript;
 
     [Header("UI")]
     public TextMeshProUGUI finishText;   // UI tekst bij finish
 
     private void Start()
     {
+        inventoryScript = inventory.GetComponent<Inventory>();
         // Zorg dat finish tekst standaard uit staat
         if (finishText != null)
             finishText.gameObject.SetActive(false);
@@ -22,6 +25,8 @@ public class PlayerPickup : MonoBehaviour
         {
             hasCube = true;
             Destroy(other.gameObject);
+            inventoryScript.additem(other.name);
+            Debug.Log("item: " + other.transform.name + " collected");
 
             // Stop pickup timer en start totale timer
             StopwatchTimerWithPickupAdjusted stopwatch = FindObjectOfType<StopwatchTimerWithPickupAdjusted>();

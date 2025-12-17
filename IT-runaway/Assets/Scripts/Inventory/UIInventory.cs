@@ -19,13 +19,7 @@ public class UIInventory : MonoBehaviour
 
     public void Refresh()
     {
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (i < inventory.items.Count)
-                slots[i].SetItem(inventory.items[i].icon);
-            else
-                slots[i].Clear();
-        }
+     
     }
 
 }

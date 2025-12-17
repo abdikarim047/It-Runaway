@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -5,12 +6,12 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
-    public List<ItemData> items = new List<ItemData>();
+    public List<string> items = new List<string>();
 
-    public void additem(ItemData item)
+    public void additem(string item)
     {
         items.Add(item);
-        Debug.Log("added:" + item.itemname);
+        Debug.Log("added:" + item);
     }
 
     // public void removeItem(ItemData item)
@@ -26,9 +27,9 @@ public class Inventory : MonoBehaviour
     {
         Debug.Log("Inventory:");
 
-        foreach (ItemData item in items)
+        foreach (string item in items)
         {
-            Debug.Log(item.itemname);
+            Debug.Log(item);
         }
 
     }

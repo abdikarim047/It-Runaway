@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4525299494038442}
   - component: {fileID: 33883024246150534}
   - component: {fileID: 23472830979472412}
+  - component: {fileID: 7261081316185168555}
   m_Layer: 0
-  m_Name: a laptop
+  m_Name: laptop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,8 +65,9 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a5a2986f4bfd1de4d8d3fc982affb717, type: 2}
   - {fileID: 2100000, guid: ab1921090dce6ac4ea5318fce9b3c2b9, type: 2}
+  - {fileID: 2100000, guid: a5a2986f4bfd1de4d8d3fc982affb717, type: 2}
+  - {fileID: 2100000, guid: 1fea72e7b0fe28d4ab09e3d10363b333, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,3 +89,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7261081316185168555
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316731507923750}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5286381, y: 0.41793233, z: 0.5737755}
+  m_Center: {x: -0.052817293, y: 0.1908288, z: -0.25080284}

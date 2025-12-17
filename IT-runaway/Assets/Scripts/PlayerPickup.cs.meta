@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: b50b28686a525fe4d9406b7a64be9006
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - finishText: {instanceID: 0}
+  - inventory: {instanceID: 0}
+  - questItemPrefab: {fileID: 1716111664439686, guid: d95dfe9eeea7731489064565a2d8b306, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
