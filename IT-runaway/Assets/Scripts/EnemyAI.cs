@@ -32,13 +32,9 @@ public class EnemyAI : MonoBehaviour
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
-            {
                 player = playerObj.transform;
-            }
             else
-            {
                 Debug.LogWarning("EnemyAI: No player found in scene!");
-            }
         }
 
         // check if agent is assigned
@@ -46,9 +42,7 @@ public class EnemyAI : MonoBehaviour
         {
             agent = GetComponent<NavMeshAgent>();
             if (agent == null)
-            {
                 Debug.LogError("EnemyAI: No NavMeshAgent found on enemy!");
-            }
         }
     }
 
@@ -60,19 +54,24 @@ public class EnemyAI : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         bool canSeePlayer = CanSeePlayer();
 
+        // check if player is on NavMesh
+        bool playerOnNavMesh = NavMesh.SamplePosition(player.position, out _, 1.2f, NavMesh.AllAreas);
+
         switch (currentState)
         {
             case State.Roaming:
                 RoamLogic();
 
-                if (canSeePlayer || distanceToPlayer <= chaseRange)
+                // switch to chase only if player is reachable
+                if ((canSeePlayer || distanceToPlayer <= chaseRange) && playerOnNavMesh)
                 {
                     currentState = State.Chasing;
                 }
                 break;
 
             case State.Chasing:
-                if (!canSeePlayer && distanceToPlayer >= stopChaseRange)
+                // stop chasing if player out of range or not on NavMesh
+                if ((!canSeePlayer && distanceToPlayer >= stopChaseRange) || !playerOnNavMesh)
                 {
                     currentState = State.Roaming;
                     break;
@@ -94,7 +93,7 @@ public class EnemyAI : MonoBehaviour
         float angle = Vector3.Angle(transform.forward, dirToPlayer);
         if (angle > fieldOfView / 2f) return false;
 
-        if (Physics.Raycast(transform.position + Vector3.up, dirToPlayer, out RaycastHit hit, sightRange))
+        if (Physics.Raycast(transform.position + Vector3.up, dirToPlayer, out RaycastHit hit, sightRange, ~obstructionMask))
         {
             if (hit.transform == player)
             {
