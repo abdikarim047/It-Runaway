@@ -4,8 +4,8 @@ using UnityEngine;
 public class SimpleFPSController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 8f;
-    public float sprintSpeed = 12f;
+    public float moveSpeed = 6f;
+    public float sprintSpeed = 10f;
     public float gravity = -9.81f;
 
     [Header("Mouse Settings")]
