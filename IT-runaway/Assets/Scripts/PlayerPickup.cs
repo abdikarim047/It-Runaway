@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI; // needed for Sprite
 
 public class PlayerPickup : MonoBehaviour
 {
@@ -8,33 +9,45 @@ public class PlayerPickup : MonoBehaviour
     private Inventory inventoryScript;
 
     [Header("UI")]
-    public TextMeshProUGUI finishText;   // UI tekst bij finish
+    public TextMeshProUGUI finishText;
 
     private void Start()
     {
         inventoryScript = inventory.GetComponent<Inventory>();
-        // Zorg dat finish tekst standaard uit staat
+
         if (finishText != null)
             finishText.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Cube oppakken
+
         if (other.CompareTag("Pickup") && !hasCube)
         {
             hasCube = true;
-            Destroy(other.gameObject);
-            inventoryScript.additem(other.name);
+
+ 
+            laptopitem laptop = other.GetComponent<laptopitem>();
+            Sprite icon = null;
+            if (laptop != null)
+                icon = laptop.laptopIcon;
+
+        
+            inventoryScript.additem(other.name, icon);
+
             Debug.Log("item: " + other.transform.name + " collected");
 
-            // Stop pickup timer en start totale timer
+   
+            Destroy(other.gameObject);
+
             StopwatchTimerWithPickupAdjusted stopwatch = FindObjectOfType<StopwatchTimerWithPickupAdjusted>();
             if (stopwatch != null)
                 stopwatch.OnCubePickedUp();
+
+         
+            FindObjectOfType<UIInventory>()?.Refresh();
         }
 
-        // Finish bereiken
         if (other.CompareTag("Finish") && hasCube)
         {
             if (finishText != null)
@@ -43,14 +56,13 @@ public class PlayerPickup : MonoBehaviour
                 finishText.text = "Laptop succesfully retrieved!";
             }
 
-            // Stop de totale timer
             StopwatchTimerWithPickupAdjusted stopwatch = FindObjectOfType<StopwatchTimerWithPickupAdjusted>();
             if (stopwatch != null)
                 stopwatch.OnFinishReached();
         }
     }
 
-    // Methode voor PlayerDamage om de pickup status te resetten bij respawn
+    // 🔁 Respawn reset — old code preserved
     public void ResetPickup()
     {
         hasCube = false;

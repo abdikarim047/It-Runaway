@@ -21,11 +21,17 @@ public class ItemCollide : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            //put in inventory
+            // Get the sprite from the prefab
+            SpriteRenderer sr = this.gameObject.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                Sprite itemSprite = sr.sprite;
+                //put in inventory
+                //inventoryScript.additem();
+            }
             //destroy prefab
-            inventoryScript.additem(collectableItem.name);
             Debug.Log("item: " + collision.transform.name + " collected");
-            
+
             Destroy(this.gameObject);
 
         }
