@@ -15,6 +15,6 @@ MonoBehaviour:
   id: 1
   itemname: laptop
   icon: {fileID: 21300000, guid: 49fa212229ac35e40b52943823d04e2a, type: 3}
-  itemprefab: {fileID: 1716111664439686, guid: d95dfe9eeea7731489064565a2d8b306, type: 3}
+  itemprefab: {fileID: 1316731507923750, guid: ec15f5ae191975f4d8de236356aaec36, type: 3}
   stackebla: 1
   maxstack: 1

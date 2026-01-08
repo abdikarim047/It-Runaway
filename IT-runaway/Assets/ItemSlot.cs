@@ -1,11 +1,9 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-
-    public Image icon;
+    public Image icon; 
 
     public void SetItem(Sprite sprite)
     {
@@ -18,6 +16,4 @@ public class ItemSlot : MonoBehaviour
         icon.sprite = null;
         icon.enabled = false;
     }
-
-
 }
