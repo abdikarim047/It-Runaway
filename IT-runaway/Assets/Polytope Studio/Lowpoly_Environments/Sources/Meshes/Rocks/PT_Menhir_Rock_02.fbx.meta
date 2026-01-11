@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Menhir_Rock_02.fbx.meta
 guid: e0fe1b80592a0144babd1bf297ad32ad
+========
+guid: f226223b3a11d2d4b980aaa520301583
+>>>>>>>> Gabriel-design2222222:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Generic_Rock_01.fbx.meta
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -113,5 +117,9 @@ AssetOrigin:
   productId: 187052
   packageName: Lowpoly Environment - Nature Free - MEDIEVAL FANTASY SERIES
   packageVersion: 1.1.1
+<<<<<<<< HEAD:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Menhir_Rock_02.fbx.meta
   assetPath: Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Menhir_Rock_02.fbx
+========
+  assetPath: Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Generic_Rock_01.fbx
+>>>>>>>> Gabriel-design2222222:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Generic_Rock_01.fbx.meta
   uploadId: 721141

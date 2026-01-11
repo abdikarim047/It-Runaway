@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 399b7b474f0e87546975706f0ebfcbac
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 146253
+  packageName: School assets
+  packageVersion: 1.0
+  assetPath: Assets/school/Prefabs/props/a laptop.prefab
+  uploadId: 436609

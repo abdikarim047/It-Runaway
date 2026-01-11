@@ -1,7 +1,24 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<<< HEAD:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Plants/PT_Grass_02.fbx.meta
 guid: 8c71f03fcb0c13644a30696cafc5cda8
+========
+guid: 5c7de3ea78afce6468d2ebe76dd0bf6d
+>>>>>>>> Gabriel-design2222222:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Flowers/PT_Poppy_02.fbx.meta
 ModelImporter:
   serializedVersion: 19301
+=======
+guid: 8c71f03fcb0c13644a30696cafc5cda8
+AssetOrigin:
+  serializedVersion: 1
+  productId: 187052
+  packageName: Lowpoly Environment - Nature Free - MEDIEVAL FANTASY SERIES
+  packageVersion: 1.1.1
+  assetPath: Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Plants/PT_Grass_02.fbx
+  uploadId: 721141
+ModelImporter:
+  serializedVersion: 22200
+>>>>>>> Gabriel-design2222222
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -24,9 +41,14 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+<<<<<<< HEAD
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
+=======
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+>>>>>>> Gabriel-design2222222
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -52,27 +74,52 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+<<<<<<< HEAD
+=======
+    importPhysicalCameras: 1
+>>>>>>> Gabriel-design2222222
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+<<<<<<< HEAD
+=======
+    nodeNameCollisionStrategy: 0
+>>>>>>> Gabriel-design2222222
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+<<<<<<< HEAD
+=======
+    bakeAxisConversion: 0
+>>>>>>> Gabriel-design2222222
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+<<<<<<< HEAD
+=======
+    optimizeBones: 1
+>>>>>>> Gabriel-design2222222
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+<<<<<<< HEAD
     secondaryUVPackMargin: 4
     useFileScale: 1
+=======
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+>>>>>>> Gabriel-design2222222
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -104,14 +151,27 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+<<<<<<< HEAD
+=======
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
+>>>>>>> Gabriel-design2222222
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+<<<<<<< HEAD
 AssetOrigin:
   serializedVersion: 1
   productId: 187052
   packageName: Lowpoly Environment - Nature Free - MEDIEVAL FANTASY SERIES
   packageVersion: 1.1.1
+<<<<<<<< HEAD:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Plants/PT_Grass_02.fbx.meta
   assetPath: Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Plants/PT_Grass_02.fbx
+========
+  assetPath: Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Flowers/PT_Poppy_02.fbx
+>>>>>>>> Gabriel-design2222222:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Flowers/PT_Poppy_02.fbx.meta
   uploadId: 721141
+=======
+>>>>>>> Gabriel-design2222222

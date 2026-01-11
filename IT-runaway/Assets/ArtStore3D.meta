@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 69cba197053ac6f44b64df072824462a
+<<<<<<<< HEAD:IT-runaway/Assets/ArtStore3D.meta
+guid: 056ffa9f7a27bbc429f3bfebcb684580
+========
+guid: 3f80244a0df702f4daeb1bde53fa3d50
+>>>>>>>> Gabriel-design2222222:IT-runaway/Assets/Day-Night Skyboxes.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
