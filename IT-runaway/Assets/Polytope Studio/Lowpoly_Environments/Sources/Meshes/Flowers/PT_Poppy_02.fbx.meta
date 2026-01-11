@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Flowers/PT_Poppy_02.fbx.meta
 guid: 5c7de3ea78afce6468d2ebe76dd0bf6d
-========
-guid: a9129ae83f8faf646961b70c4b103833
->>>>>>>> Gabriel-design2222222:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Ore_Rock_01.fbx.meta
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -117,9 +113,5 @@ AssetOrigin:
   productId: 187052
   packageName: Lowpoly Environment - Nature Free - MEDIEVAL FANTASY SERIES
   packageVersion: 1.1.1
-<<<<<<<< HEAD:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Flowers/PT_Poppy_02.fbx.meta
   assetPath: Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Flowers/PT_Poppy_02.fbx
-========
-  assetPath: Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Ore_Rock_01.fbx
->>>>>>>> Gabriel-design2222222:IT-runaway/Assets/Polytope Studio/Lowpoly_Environments/Sources/Meshes/Rocks/PT_Ore_Rock_01.fbx.meta
   uploadId: 721141

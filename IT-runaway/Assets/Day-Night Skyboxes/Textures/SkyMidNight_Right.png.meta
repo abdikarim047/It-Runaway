@@ -30,26 +30,16 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-<<<<<<< HEAD
   textureFormat: -1
-=======
-  textureFormat: 1
->>>>>>> Gabriel-design2222222
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: 1
     aniso: 1
     mipBias: 0
-<<<<<<< HEAD
     wrapU: 1
     wrapV: 1
     wrapW: 1
-=======
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
->>>>>>> Gabriel-design2222222
   nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
@@ -73,15 +63,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-<<<<<<< HEAD
   applyGammaDecoding: 1
   swizzle: 50462976
   cookieLightType: 1
-=======
-  applyGammaDecoding: 0
-  swizzle: 50462976
-  cookieLightType: 0
->>>>>>> Gabriel-design2222222
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -131,7 +115,6 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-<<<<<<< HEAD
 AssetOrigin:
   serializedVersion: 1
   productId: 32236
@@ -139,5 +122,3 @@ AssetOrigin:
   packageVersion: 2.0
   assetPath: Assets/Day-Night Skyboxes/Textures/SkyMidNight_Right.png
   uploadId: 139764
-=======
->>>>>>> Gabriel-design2222222
