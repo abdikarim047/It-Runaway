@@ -32,34 +32,35 @@ public class PlayerDamage : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
+{
+    if (isDead) return;
+
+    if (collision.gameObject.CompareTag("Enemy"))
     {
-        if (isDead) return;
+        isDead = true;
 
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            isDead = true;
+        // Toon Game Over UI direct
+        if (gameOverImage != null)
+            gameOverImage.gameObject.SetActive(true);
 
-            // Toon Game Over UI
-            if (gameOverImage != null)
-                gameOverImage.gameObject.SetActive(true);
+        // Stop timers
+        StopwatchTimerWithPickupAdjusted stopwatch = FindObjectOfType<StopwatchTimerWithPickupAdjusted>();
+        if (stopwatch != null)
+            stopwatch.StopAllTimers();
 
-            // Stop timers
-            StopwatchTimerWithPickupAdjusted stopwatch = FindObjectOfType<StopwatchTimerWithPickupAdjusted>();
-            if (stopwatch != null)
-                stopwatch.StopAllTimers();
+        // Disable beweging
+        if (cc != null) cc.enabled = false;
+        if (rb != null) rb.isKinematic = true;
 
-            // Disable beweging
-            if (cc != null) cc.enabled = false;
-            if (rb != null) rb.isKinematic = true;
+        // Verberg speler tijdelijk (optioneel)
+        if (playerRenderer != null) playerRenderer.enabled = false;
+        if (playerCollider != null) playerCollider.enabled = false;
 
-            // Verberg speler tijdelijk
-            if (playerRenderer != null) playerRenderer.enabled = false;
-            if (playerCollider != null) playerCollider.enabled = false;
-
-            // Start respawn
-            StartCoroutine(RespawnPlayer());
-        }
+        // Start respawn coroutine (speler onder de map)
+        StartCoroutine(RespawnPlayer());
     }
+}
+
 
     private IEnumerator RespawnPlayer()
     {
