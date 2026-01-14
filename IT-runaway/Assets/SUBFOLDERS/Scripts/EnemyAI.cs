@@ -7,19 +7,20 @@ public class EnemyAI : MonoBehaviour
     public Transform player;
 
     [Header("CHASE SETTINGS")]
-    public float chaseRange = 10f;       
+    public float chaseRange = 10f;
     public float stopChaseRange = 15f;
 
     [Header("SIGHT SETTINGS")]
-    public float sightRange = 12f;       
-    public float fieldOfView = 90f;      
-    public LayerMask obstructionMask;    
+    public float sightRange = 12f;
+    public float fieldOfView = 90f;
+    public LayerMask obstructionMask;
 
     [Header("ROAM SETTINGS")]
     public float roamRadius = 10f;
     public float roamInterval = 3f;
 
     private float roamTimer;
+
     private enum State { Roaming, Chasing }
     private State currentState = State.Roaming;
 
@@ -27,35 +28,27 @@ public class EnemyAI : MonoBehaviour
     {
         roamTimer = roamInterval;
 
-        // auto-find player if not assigned
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
-            {
                 player = playerObj.transform;
-            }
-            else
-            {
-                Debug.LogWarning("EnemyAI: No player found in scene!");
-            }
         }
 
-        // check if agent is assigned
         if (agent == null)
-        {
             agent = GetComponent<NavMeshAgent>();
-            if (agent == null)
-            {
-                Debug.LogError("EnemyAI: No NavMeshAgent found on enemy!");
-            }
-        }
     }
 
     void Update()
     {
-        // safety check: stop if no player
         if (player == null || agent == null) return;
+
+        // speler niet op NavMesh → altijd roamen
+        if (!IsPlayerOnNavMesh())
+        {
+            currentState = State.Roaming;
+            return;
+        }
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         bool canSeePlayer = CanSeePlayer();
@@ -85,8 +78,6 @@ public class EnemyAI : MonoBehaviour
 
     bool CanSeePlayer()
     {
-        if (player == null) return false;
-
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance > sightRange) return false;
 
@@ -97,13 +88,26 @@ public class EnemyAI : MonoBehaviour
         if (Physics.Raycast(transform.position + Vector3.up, dirToPlayer, out RaycastHit hit, sightRange))
         {
             if (hit.transform == player)
-            {
                 return true;
-            }
         }
 
         return false;
     }
+
+    bool IsPlayerOnNavMesh()
+{
+    if (player == null) return false;
+
+    // Raycast naar beneden om de grond onder de speler te vinden
+    if (Physics.Raycast(player.position, Vector3.down, out RaycastHit hit, 5f))
+    {
+        NavMeshHit navHit;
+        return NavMesh.SamplePosition(hit.point, out navHit, 0.2f, NavMesh.AllAreas);
+    }
+
+    return false;
+}
+
 
     void RoamLogic()
     {
@@ -119,22 +123,20 @@ public class EnemyAI : MonoBehaviour
 
     void ChaseLogic()
     {
+        if (!IsPlayerOnNavMesh()) return;
+
         if (agent.isOnNavMesh)
-        {
             agent.SetDestination(player.position);
-        }
     }
 
-    public Vector3 RandomNavmeshLocation(float radius)
+    Vector3 RandomNavmeshLocation(float radius)
     {
         for (int i = 0; i < 10; i++)
         {
             Vector3 randomDirection = Random.insideUnitSphere * radius + transform.position;
 
             if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, radius, NavMesh.AllAreas))
-            {
                 return hit.position;
-            }
         }
 
         return transform.position;
